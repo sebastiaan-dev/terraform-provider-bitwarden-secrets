@@ -1,6 +1,6 @@
 # Terraform Provider for Bitwarden Secrets
 
-This project builds a Terraform Proivder on top of Bitwardens [Secrets Manager CLI](https://bitwarden.com/help/secrets-manager-cli/). It allows for reading secrets into Data Sources, or managing secrets or projects through Resources.
+This project builds a Terraform Provider on top of Bitwarden [Secrets Manager CLI](https://bitwarden.com/help/secrets-manager-cli/). It allows for reading secrets into Data Sources, or managing secrets or projects through Resources.
 
 ## Requirements
 
@@ -57,14 +57,14 @@ resource "bitwarden-secrets_project" "example_project" {
 }
 
 # Create a Terraform managed secret
-resource "bitwarden-secrets_secret" "example" {
+resource "bitwarden-secrets_secret" "managed_secret" {
     key = "test-terraform"
     value = "hello world!"
     project_id = bitwarden-secrets_project.example_project.id
 }
 
 # Or get a secret directly by using its id
-data "bitwarden-secrets_secret" "vpn" {
+data "bitwarden-secrets_secret" "read_only_secret" {
     id = "Id of the secret"
 }
 ```
